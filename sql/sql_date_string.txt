@@ -1,0 +1,83 @@
+/****** Script for SelectTopNRows command from SSMS  ******/
+SELECT TOP 1000 [SalesOrderID]
+      ,[SalesOrderDetailID]
+      ,[CarrierTrackingNumber]
+      ,[OrderQty]
+      ,[ProductID]
+      ,[SpecialOfferID]
+      ,[UnitPrice]
+      ,[UnitPriceDiscount]
+      ,[LineTotal]
+      ,[rowguid]
+      ,[ModifiedDate]
+  FROM [AdventureWorks2016CTP3].[Sales].[SalesOrderDetail]
+
+  update [AdventureWorks2016CTP3].[Sales].[SalesOrderDetail] set [ModifiedDate]='2016-07-21' where [SalesOrderDetailID]=1 
+
+  --returns 1 if valid else 0--
+  select  ISDATE('2016-07-21')
+
+  --to get the sysytem date--
+  select DAY(GETDATE()),MONTH(GETDATE()),YEAR(GETDATE()) 
+
+  --Datename--
+  select DATENAME(YEAR,'2016-07-21')
+  select DATENAME(MONTH,'2016-07-21')
+  select DATENAME(DAY,'2016-07-21')
+  select DATENAME(DAYOFYEAR,'2016-07-21')
+  select DATENAME(WEEKDAY,'2016-07-21')
+
+  --Datepart--
+  select DATEPART(YEAR,'2016-07-21')
+   select DATEPART(WEEKDAY,'2016-07-21')
+   select DATEPART(MONTH,'2016-07-21')
+
+   --DateAdd--
+   select DATEADD(YEAR,1,'2016-07-21')
+    select DATEADD(MONTH,1,'2016-03-31')--maintains the number of days in a month--
+   select DATEADD(DAY,1,'2016-07-21')
+    select DATEADD(DAYOFYEAR,1,'2016-07-21')
+
+	--DateDiff--
+	--if the two given dates are in the decreasing order it will return negative values for any interval--
+	select DATEDIFF(YEAR,'2016-07-21','2017-07-21')
+	select DATEDIFF(MONTH,'2016-07-21','2017-07-21')
+	select DATEDIFF(DAY,'2016-07-21','2017-07-21')
+
+	--Left function--
+	select LEFT('Arjun asd',3)--result:Arj--
+	select LEFT('Arjun asd',7)--result:Arjun a--
+
+	--Right function--
+	select RIGHT('Arjun',4)--result:rjun--
+	select RIGHT('Arjun asd',5)--result:n asd--
+
+	--CharIndex function--
+	select CHARINDEX('Arj','I am Arjun',6)--if the statring position is between 0-6 answer ins 6 else answer is 0--
+	select CHARINDEX('Arj','I am Arjun',7)--result is 0--
+
+	--Substring Function--
+	select SUBSTRING('I am arjun',6,5)--result:arjun--
+
+	--repicate function--
+	select REPLICATE('Arjun ',5)--will consider space , result:Arjun Arjun Arjun Arjun Arjun --
+
+	--space function--
+	select REPLICATE('Arjun'+ SPACE(10),5)--result:Arjun          Arjun          Arjun          Arjun          Arjun          --
+
+	--PatIndex function--
+    SELECT PATINDEX('%_r_%', 'I am Arjun');  --result:6--
+
+	--replace function--
+	select REPLACE('I am arjun','arjun','Arjun')--result:I am Arjun--
+
+	--stuff function--
+	--3rd parameter is used for replacement--
+	select STUFF('I am Arjun',6,0,'Mr.')--result:I am Mr.Arjun--
+	select STUFF('I am Arjun',6,2,'Mr.')--result:I am Mr.jun--
+
+
+
+
+
+
